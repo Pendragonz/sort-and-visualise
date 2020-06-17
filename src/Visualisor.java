@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -11,13 +13,14 @@ import javax.swing.border.*;
  */
 public class Visualisor {
 	private JFrame mainFrame;
-	private JTextArea log;
+
 	
 	public Visualisor() {
-		make();
+		createWindow();
 	}
 	
-	public void make() {
+	
+	public void createWindow() {
 		
 		
 		final int blankSpace = 6;
@@ -29,9 +32,6 @@ public class Visualisor {
 		JButton mergeButton = new JButton();
 		
 		
-		log = new JTextArea();
-		log.setEditable(true);
-		
 		//step 2: specify component properties
 		bubbleButton.setText("Bubble Sort");
 		bubbleButton.setToolTipText("Starts a Bubble Sort");
@@ -41,8 +41,6 @@ public class Visualisor {
 		insertionButton.setToolTipText("Starts an Insertion Sort");
 		mergeButton.setText("Merge Sort");
 		mergeButton.setToolTipText("Starts a Merge Sort");
-		
-		
 		
 		
 		//step 3: create containers
@@ -58,15 +56,17 @@ public class Visualisor {
 		buttonBox.setLayout(new FlowLayout());
 		buttonBox.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
+		
 		//step 5: add components to containers
 		buttonBox.add(bubbleButton);
 		buttonBox.add(quickButton);
 		buttonBox.add(insertionButton);
 		buttonBox.add(mergeButton);
 		
+
 		mainFrame.add(buttonBox, BorderLayout.NORTH);
-		mainFrame.add(log, BorderLayout.SOUTH);
-		
+
+
 		
 		//step 6: arrange to handle events in user interface
 		mainFrame.addWindowListener(new WindowAdapter() {
@@ -75,7 +75,28 @@ public class Visualisor {
 			}
 		});
 		
-		//TODO setup events for all buttons
+
+		bubbleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bubbleClick();
+			}
+		});
+		quickButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				quickClick();
+			}
+		});
+		mergeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mergeClick();
+			}
+		});
+		insertionButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				insertionClick();
+			}
+		});
+		
 		//TODO add container to display a row of Sortable objects.
 		
 		
@@ -91,5 +112,36 @@ public class Visualisor {
 		System.exit(0);
 	}
 	
+	
+	//TODO link to Sorters
+	
+	
+	/**
+	 * onclick functionality for bubbleButton
+	 */
+	private void bubbleClick() {
+		System.out.println("BubbleButton Clicked");
+	}
+	
+	/**
+	 * onclick functionality for quickButton
+	 */
+	private void quickClick() {
+		System.out.println("QuickButton Clicked");
+	}
+	
+	/**
+	 * onclick functionality for mergeButton
+	 */
+	private void mergeClick() {
+		System.out.println("MergeButton Clicked");
+	}
+	
+	/**
+	 * onclick functionality for insertionButton
+	 */
+	private void insertionClick() {
+		System.out.println("InsertionButton Clicked");
+	}
 	
 }
