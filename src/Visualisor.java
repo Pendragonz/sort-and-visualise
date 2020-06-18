@@ -6,6 +6,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.table.DefaultTableModel;
 /**
  * 
  * @author Pendragonz
@@ -13,7 +14,11 @@ import javax.swing.border.*;
  */
 public class Visualisor {
 	private JFrame mainFrame;
+	private JTable table;
 
+	//TODO -- generate table headers based on this value
+	public static final int LENGTH_OF_SORTING_SPACE = 10;
+	
 	
 	public Visualisor() {
 		createWindow();
@@ -32,6 +37,16 @@ public class Visualisor {
 		JButton mergeButton = new JButton();
 		
 		
+		Object[][] startingData = {
+				{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
+				};
+		
+		
+		
+		String[] columnTitles = {"", "", "", "", "", "", "", "", "", ""};
+		
+		table = new JTable(new DefaultTableModel(startingData, columnTitles));
+		
 		//step 2: specify component properties
 		bubbleButton.setText("Bubble Sort");
 		bubbleButton.setToolTipText("Starts a Bubble Sort");
@@ -49,6 +64,9 @@ public class Visualisor {
 		
 		JPanel buttonBox = new JPanel();
 		
+		JScrollPane scrollPane = new JScrollPane(table);
+		table.setFillsViewportHeight(true);
+		
 		//step 4: specify LayoutManagers
 		mainFrame.setLayout(new BorderLayout());
 		((JPanel)mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
@@ -65,7 +83,7 @@ public class Visualisor {
 		
 
 		mainFrame.add(buttonBox, BorderLayout.NORTH);
-
+		mainFrame.add(scrollPane, BorderLayout.SOUTH);
 
 		
 		//step 6: arrange to handle events in user interface
@@ -112,10 +130,9 @@ public class Visualisor {
 		System.exit(0);
 	}
 	
+
 	
 	//TODO link to Sorters
-	
-	
 	/**
 	 * onclick functionality for bubbleButton
 	 */
