@@ -22,6 +22,7 @@ public class Visualisor {
 	
 	public Visualisor() {
 		createWindow();
+		loopNewTableRows();
 	}
 	
 	
@@ -131,6 +132,25 @@ public class Visualisor {
 	}
 	
 
+	
+	private void loopNewTableRows() {
+		while (true)  {
+			addTableRow(new Object[] {"0","1","2","3","4","5","6","7","8","9"});
+			try {
+				Thread.sleep(500);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+	}
+
+	private void addTableRow(Object[] row) {
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.addRow(row);
+	}
+	
+	
+	
 	
 	//TODO link to Sorters
 	/**
