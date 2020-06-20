@@ -13,4 +13,10 @@ public class Quick extends Sorter {
 		return null;
 	}
 
+	@Override
+	public Sortable[] iter(Sortable[] in) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

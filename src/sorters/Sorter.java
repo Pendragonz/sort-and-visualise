@@ -7,6 +7,11 @@ public abstract class Sorter {
 		this.sortable = sortable;
 	}
 	
+	public Sorter() {
+		
+	}
+	
 	public abstract Sortable[] sort();
 	
+	public abstract Sortable[] iter(Sortable[] in);
 }

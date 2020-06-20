@@ -31,6 +31,9 @@ public class Sortable {
 		return colour;
 	}
 	
+	public String toString() {
+		return "" + value;
+	}
 	
 	
 }

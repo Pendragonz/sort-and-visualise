@@ -23,5 +23,10 @@ public class Bubble extends Sorter {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Sortable[] iter(Sortable[] in) {
+		return in;
+	}
 
 }

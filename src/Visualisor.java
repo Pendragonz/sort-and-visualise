@@ -7,6 +7,9 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
+
+import sorters.Sortable;
+import sorters.Sorter;
 /**
  * 
  * @author Pendragonz
@@ -15,13 +18,16 @@ import javax.swing.table.DefaultTableModel;
 public class Visualisor {
 	private JFrame mainFrame;
 	private JTable table;
-
+	private Sortable[] row;
+	
+	
 	//TODO -- generate table headers based on this value
 	public static final int LENGTH_OF_SORTING_SPACE = 10;
 	
 	
 	public Visualisor() {
 		createWindow();
+		randomiseRow();
 		loopNewTableRows();
 	}
 	
@@ -133,7 +139,8 @@ public class Visualisor {
 	
 
 	
-	private void loopNewTableRows() {
+	private void loopNewTableRows(Sorter sorter) {
+		/*
 		while (true)  {
 			addTableRow(new Object[] {"0","1","2","3","4","5","6","7","8","9"});
 			try {
@@ -141,7 +148,12 @@ public class Visualisor {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
+		}*/
+		while (true) {
+			row = sorter.iter(row);
+			addTableRow(row);
 		}
+		
 	}
 
 	private void addTableRow(Object[] row) {
@@ -149,6 +161,9 @@ public class Visualisor {
 		model.addRow(row);
 	}
 	
+	private void randomiseRow() {
+		//setup global Sortable[] row variable
+	}
 	
 	
 	
