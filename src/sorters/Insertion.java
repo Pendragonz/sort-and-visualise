@@ -9,6 +9,8 @@ package sorters;
  *
  */
 public class Insertion extends Sorter {
+	
+	private int sorted;
 
 	/**
 	 * @param sortable
