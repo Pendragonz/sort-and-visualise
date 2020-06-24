@@ -16,17 +16,13 @@ public class Bubble extends Sorter {
 	public Bubble(Sortable[] sortable) {
 		super(sortable);
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
-	public Sortable[] sort() {
+	public Sortable[] iter() {
 		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public Sortable[] iter(Sortable[] in) {
-		return in;
+		return sortable;
 	}
 
 }

@@ -1,3 +1,4 @@
+import java.util.Random;
 
 /**
  * @author Pendragonz
@@ -9,9 +10,10 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello World!");
-		Visualisor v = new Visualisor();
+		
+		Random r = new Random();
+		r.setSeed(912839);
+		Visualisor v = new Visualisor(r);
 	}
 
 }

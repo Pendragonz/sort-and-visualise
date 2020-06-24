@@ -19,15 +19,11 @@ public class Merge extends Sorter {
 	}
 
 	@Override
-	public Sortable[] sort() {
+	public Sortable[] iter() {
 		// TODO Auto-generated method stub
-		return null;
+		return sortable;
 	}
 
-	@Override
-	public Sortable[] iter(Sortable[] in) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

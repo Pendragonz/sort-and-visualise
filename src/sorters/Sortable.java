@@ -13,7 +13,7 @@ public class Sortable {
 	 * @param rand		Random number generator.
 	 */
 	public Sortable(int maxnum, Random rand) {
-		this.value = rand.nextInt();
+		this.value = rand.nextInt(maxnum);
 		generateColour(maxnum);
 		
 	}

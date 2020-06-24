@@ -3,11 +3,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Random;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
 
+import sorters.Bubble;
 import sorters.Sortable;
 import sorters.Sorter;
 /**
@@ -16,8 +18,9 @@ import sorters.Sorter;
  *
  */
 public class Visualisor {
+	private Random random;
 	private JFrame mainFrame;
-	private JTable table;
+	private JTextArea text;
 	private Sortable[] row;
 	
 	
@@ -25,10 +28,11 @@ public class Visualisor {
 	public static final int LENGTH_OF_SORTING_SPACE = 10;
 	
 	
-	public Visualisor() {
+	public Visualisor(Random random) {
+		this.random = random;
 		createWindow();
-		randomiseRow();
-		loopNewTableRows();
+		//randomiseRow();
+		
 	}
 	
 	
@@ -43,17 +47,9 @@ public class Visualisor {
 		JButton insertionButton = new JButton();
 		JButton mergeButton = new JButton();
 		
+		text = new JTextArea("", 20, 50);
 		
-		Object[][] startingData = {
-				{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
-				};
-		
-		
-		
-		String[] columnTitles = {"", "", "", "", "", "", "", "", "", ""};
-		
-		table = new JTable(new DefaultTableModel(startingData, columnTitles));
-		
+				
 		//step 2: specify component properties
 		bubbleButton.setText("Bubble Sort");
 		bubbleButton.setToolTipText("Starts a Bubble Sort");
@@ -64,6 +60,9 @@ public class Visualisor {
 		mergeButton.setText("Merge Sort");
 		mergeButton.setToolTipText("Starts a Merge Sort");
 		
+		text.setLineWrap(true);
+		text.setEditable(true);
+		
 		
 		//step 3: create containers
 		mainFrame = new JFrame("Visualisor");
@@ -71,8 +70,8 @@ public class Visualisor {
 		
 		JPanel buttonBox = new JPanel();
 		
-		JScrollPane scrollPane = new JScrollPane(table);
-		table.setFillsViewportHeight(true);
+		JScrollPane scrollPane = new JScrollPane(text);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		//step 4: specify LayoutManagers
 		mainFrame.setLayout(new BorderLayout());
@@ -122,8 +121,6 @@ public class Visualisor {
 			}
 		});
 		
-		//TODO add container to display a row of Sortable objects.
-		
 		
 		
 		//step 7: display
@@ -138,41 +135,55 @@ public class Visualisor {
 	}
 	
 
-	
+	/*
 	private void loopNewTableRows(Sorter sorter) {
-		/*
-		while (true)  {
-			addTableRow(new Object[] {"0","1","2","3","4","5","6","7","8","9"});
-			try {
-				Thread.sleep(500);
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		}*/
 		while (true) {
 			row = sorter.iter(row);
 			addTableRow(row);
 		}
-		
-	}
+	}*/
 
-	private void addTableRow(Object[] row) {
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		model.addRow(row);
+	private void addTableRow(Sortable[] row) {
+		String line = "";
+		for(int i=0; i < row.length; i++) {
+			line += row[i].toString();
+		}
 	}
 	
-	private void randomiseRow() {
-		//setup global Sortable[] row variable
+	
+	private Sortable[] randomiseRow(int length, int max) {
+		Sortable[] row = new Sortable[length];
+		
+		for(int i=0; i < row.length; i++) {
+			row[i] = new Sortable(max, random);
+		}
+		
+		return row;
 	}
 	
 	
+	private SortingThread sort;	
 	
-	//TODO link to Sorters
+	
+	//TODO merge all buttonClick methods and use an enum parameter
+	
 	/**
 	 * onclick functionality for bubbleButton
 	 */
 	private void bubbleClick() {
 		System.out.println("BubbleButton Clicked");
+		if (sort == null) {
+			Bubble b = new Bubble( randomiseRow(10, 20) );
+			startThread(b);
+		} 
+		
+		if (sort.running == true){
+			sort.running = false;
+			sort.stop();
+			sort = null;
+		} else if (sort.running == false) {
+			sort.start();
+		}
 	}
 	
 	/**
@@ -194,6 +205,10 @@ public class Visualisor {
 	 */
 	private void insertionClick() {
 		System.out.println("InsertionButton Clicked");
+	}
+	
+	private void startThread(Sorter s) {
+		sort = new SortingThread(text, s);
 	}
 	
 }

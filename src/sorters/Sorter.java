@@ -1,7 +1,7 @@
 package sorters;
 
 public abstract class Sorter {
-	private Sortable[] sortable;
+	protected Sortable[] sortable;
 	
 	public Sorter(Sortable[] sortable) {
 		this.sortable = sortable;
@@ -11,7 +11,15 @@ public abstract class Sorter {
 		
 	}
 	
-	public abstract Sortable[] sort();
+	public abstract Sortable[] iter();
 	
-	public abstract Sortable[] iter(Sortable[] in);
+	public String nextLine() {
+		sortable = iter();
+		
+		String str = "";
+		for (int i = 0; i < sortable.length; i++) {
+			str += sortable[i].getValue() + ", ";
+		}
+		return str;
+	}
 }

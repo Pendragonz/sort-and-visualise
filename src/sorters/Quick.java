@@ -7,16 +7,11 @@ public class Quick extends Sorter {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public Sortable[] sort() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public Sortable[] iter(Sortable[] in) {
+	public Sortable[] iter() {
 		// TODO Auto-generated method stub
-		return null;
+		return sortable;
 	}
 
 }
