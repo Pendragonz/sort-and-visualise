@@ -22,4 +22,16 @@ public abstract class Sorter {
 		}
 		return str;
 	}
+	
+	/**Swap indexes a and b in sortable
+	 * 
+	 * @param a
+	 * @param b
+	 */
+	public void swap(int a, int b) {
+		Sortable temp = sortable[a];
+		sortable[a] = sortable[b];
+		sortable[b] = temp;
+	}
+	
 }
