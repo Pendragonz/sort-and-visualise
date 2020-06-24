@@ -135,14 +135,6 @@ public class Visualisor {
 	}
 	
 
-	/*
-	private void loopNewTableRows(Sorter sorter) {
-		while (true) {
-			row = sorter.iter(row);
-			addTableRow(row);
-		}
-	}*/
-
 	private void addTableRow(Sortable[] row) {
 		String line = "";
 		for(int i=0; i < row.length; i++) {
@@ -173,7 +165,7 @@ public class Visualisor {
 	private void bubbleClick() {
 		System.out.println("BubbleButton Clicked");
 		if (sort == null) {
-			Bubble b = new Bubble( randomiseRow(10, 20) );
+			Bubble b = new Bubble( randomiseRow(20, 100) );
 			startThread(b);
 		} 
 		
@@ -208,6 +200,7 @@ public class Visualisor {
 	}
 	
 	private void startThread(Sorter s) {
+		text.setText("");
 		sort = new SortingThread(text, s);
 	}
 	
