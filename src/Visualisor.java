@@ -21,18 +21,12 @@ public class Visualisor {
 	private Random random;
 	private JFrame mainFrame;
 	private JTextArea text;
-	private Sortable[] row;
-	
-	
-	//TODO -- generate table headers based on this value
-	public static final int LENGTH_OF_SORTING_SPACE = 10;
 	
 	
 	public Visualisor(Random random) {
 		this.random = random;
 		createWindow();
-		//randomiseRow();
-		
+
 	}
 	
 	
@@ -127,19 +121,10 @@ public class Visualisor {
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 		
-		
 	}
 	
 	private void exitApp() {
 		System.exit(0);
-	}
-	
-
-	private void addTableRow(Sortable[] row) {
-		String line = "";
-		for(int i=0; i < row.length; i++) {
-			line += row[i].toString();
-		}
 	}
 	
 	
@@ -181,21 +166,21 @@ public class Visualisor {
 	/**
 	 * onclick functionality for quickButton
 	 */
-	private void quickClick() {
+	private void quickClick() {//TODO
 		System.out.println("QuickButton Clicked");
 	}
 	
 	/**
 	 * onclick functionality for mergeButton
 	 */
-	private void mergeClick() {
+	private void mergeClick() {//TODO
 		System.out.println("MergeButton Clicked");
 	}
 	
 	/**
 	 * onclick functionality for insertionButton
 	 */
-	private void insertionClick() {
+	private void insertionClick() {//TODO
 		System.out.println("InsertionButton Clicked");
 	}
 	
