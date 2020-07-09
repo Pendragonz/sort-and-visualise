@@ -41,6 +41,12 @@ public abstract class Sorter {
 		for (int i = 0; i < arr.length; i++) {
 			str += arr[i].getValue() + ", ";
 		}
+		
+		if(str.length() > 2) {
+			//remove final ', '
+			str = str.substring(0, str.length() - 2);
+		}
+		
 		return str;
 	}
 	
