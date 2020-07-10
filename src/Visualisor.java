@@ -149,37 +149,16 @@ public class Visualisor {
 	 * onclick functionality for bubbleButton
 	 */
 	private void bubbleClick() {
-		System.out.println("BubbleButton Clicked");
-		if (sort == null) {
-			Bubble b = new Bubble( randomiseRow(20, 100) );
-			startThread(b);
-		} 
-		
-		if (sort.running == true){
-			sort.running = false;
-			sort.stop();
-			sort = null;
-		} else if (sort.running == false) {
-			sort.start();
-		}
+		Bubble b = new Bubble(randomiseRow(20, 100));
+		onClick(b);
 	}
 	
 	/**
 	 * onclick functionality for quickButton
 	 */
 	private void quickClick() {//TODO
-		if (sort == null) {
-			Quick q = new Quick( randomiseRow(20, 100) );
-			startThread(q);
-		} 
-		
-		if (sort.running == true){
-			sort.running = false;
-			sort.stop();
-			sort = null;
-		} else if (sort.running == false) {
-			sort.start();
-		}
+		Quick q = new Quick( randomiseRow(20, 100) );
+		onClick(q);
 	}
 	
 	/**
@@ -194,6 +173,20 @@ public class Visualisor {
 	 */
 	private void insertionClick() {//TODO
 		System.out.println("InsertionButton Clicked");
+	}
+
+	private void onClick(Sorter s) {
+		if(sort == null) {
+			startThread(s);
+		}
+		
+		if(sort.running == true) {
+			sort.running = false;
+			sort.stop();
+			sort=null;
+		} else if (sort.running == false) {
+			sort.start();
+		}
 	}
 	
 	private void startThread(Sorter s) {
