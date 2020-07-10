@@ -10,6 +10,7 @@ import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
 
 import sorters.Bubble;
+import sorters.Quick;
 import sorters.Sortable;
 import sorters.Sorter;
 /**
@@ -167,7 +168,18 @@ public class Visualisor {
 	 * onclick functionality for quickButton
 	 */
 	private void quickClick() {//TODO
-		System.out.println("QuickButton Clicked");
+		if (sort == null) {
+			Quick q = new Quick( randomiseRow(20, 100) );
+			startThread(q);
+		} 
+		
+		if (sort.running == true){
+			sort.running = false;
+			sort.stop();
+			sort = null;
+		} else if (sort.running == false) {
+			sort.start();
+		}
 	}
 	
 	/**
