@@ -143,8 +143,6 @@ public class Visualisor {
 	private SortingThread sort;	
 	
 	
-	//TODO merge all buttonClick methods and use an enum parameter
-	
 	/**
 	 * onclick functionality for bubbleButton
 	 */
@@ -156,7 +154,7 @@ public class Visualisor {
 	/**
 	 * onclick functionality for quickButton
 	 */
-	private void quickClick() {//TODO
+	private void quickClick() {
 		Quick q = new Quick( randomiseRow(20, 100) );
 		onClick(q);
 	}
