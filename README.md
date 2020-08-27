@@ -5,10 +5,10 @@
 ### Create a tool to visualise a variety of sorting algorithms.
 
 The algorithms it aims to support (in order) are:
-[x] Bubble Sort
-[x] Quick Sort
-[] Merge Sort
-[] Insertion Sort
+- [x] Bubble Sort
+- [x] Quick Sort
+- [ ] Merge Sort
+- [ ] Insertion Sort
 
 ### Personal Goals
 
